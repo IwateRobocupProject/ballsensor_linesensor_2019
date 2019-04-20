@@ -5,7 +5,6 @@ DigitalIn IR0(PB_4);//0
 DigitalIn IR1(PB_5);//45
 DigitalIn IR2(PA_11);//90
 DigitalIn IR3(PA_8);//135
-
 DigitalIn IR4(PF_1);//180(-180)
 DigitalIn IR5(PF_0);//-135
 DigitalIn IR6(PA_1);//-90

@@ -22,7 +22,7 @@ AnalogOut distance_analog(PA_5);
 
 // value
 const float PI = 3.1415926;
-const int rate = 1500;//sampling rate
+const int rate = 750;//sampling rate
 int Ballmin[7];//temp minimum
 double deg,Ave,dis,Vx,Vy;
 int min(int a, int b);//minimum
@@ -109,10 +109,11 @@ int main()
         
         //ball is found
         if(Ave <= 0.9) {
-                    
+
+            /*get ball degree*/
             Vx = (double)(rate-Ball[0])*1+(double)(rate-Ball[1])*0.71+(double)(rate-Ball[2])*0+(double)(rate-Ball[3])*-0.71+(double)(rate-Ball[4])*-1+(double)(rate-Ball[5])*-0.71+(double)(rate-Ball[6])*0+(double)(rate-Ball[7])*0.71;
             Vy = (double)(rate-Ball[0])*0+(double)(rate-Ball[1])*0.71+(double)(rate-Ball[2])*1+(double)(rate-Ball[3])*0.71+(double)(rate-Ball[4])*0+(double)(rate-Ball[5])*-0.71+(double)(rate-Ball[6])*-1+(double)(rate-Ball[7])*-0.71;
-            deg = (atan2(Vy,Vx)*((double)180/PI));
+            deg = (atan2(Vy,Vx)*(180.0/PI));
             
             if(Ball[0] == Ballmin[6]) {
                 if(deg > 22.5){
@@ -174,17 +175,14 @@ int main()
                     deg = -67.5;
                 }
             }
+            /*get ball distance*/
+            dis = sqrt(Vx*Vx+Vy*Vy);
+            dis = 1.0 - (dis/(double)rate);
         //ball is not found
         } else {
             deg = 0;
-            dis = 255;
+            dis = 1.0;
         }
-        
-        /*get ball distance*/
-        for(int i = 0; i < 8; i++){
-            dis += Ball[i];
-        }
-        dis = dis/(double)(8*rate);
         
         /*analog send*/
         degree_analog = (deg/360 + 0.5);

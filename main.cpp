@@ -61,7 +61,7 @@ int main() {
 	time2.start();
 	time3.start();
 	time4.start();
-
+	ball_ticker.attach_us(&ball_read,1);
 	/*line state*/
 	while (1) {
 
@@ -185,9 +185,7 @@ int main() {
 				}
 			}
 		}
-		while(UART.readable > 0){
-			UART.getc();
-		}
+
 		/*analog send*/
 		degree_analog = (deg / 360 + 0.5);
 		distance_analog = dis;

@@ -25,7 +25,7 @@ AnalogOut distance_analog(PA_5);
 
 // value
 const float PI = 3.1415926;
-const int rate = 500; //sampling rate
+const int rate = 100; //sampling rate
 int Ballmin[7]; //temp minimum
 int Ball[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
 float deg, Ave, dis, Vx, Vy;

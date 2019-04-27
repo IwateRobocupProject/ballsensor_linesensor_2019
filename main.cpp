@@ -94,7 +94,7 @@ int main() {
 			time3.reset();
 			time2.reset();
 		}
-		if (time1.read() >= 0.20 || time3.read() <= 0.20) { //time
+		if (time1.read() >= 0.25 || time3.read() <= 0.25) { //time
 			a = 0;
 			b = 0;
 			state1 = not1;
@@ -125,7 +125,7 @@ int main() {
 			time4.reset();
 			time1.reset();
 		}
-		if (time2.read() >= 0.15 || time4.read() <= 0.20) { //time
+		if (time2.read() >= 0.20 || time4.read() <= 0.25) { //time
 			c = 0;
 			d = 0;
 			state2 = not2;
